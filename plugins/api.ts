@@ -108,7 +108,7 @@ export default defineNuxtPlugin(() => {
 
       // 성공 응답인 경우
       if (body.status) {
-        return;
+        return body.data;
       }
 
       // 에러 응답인 경우

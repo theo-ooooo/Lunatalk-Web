@@ -23,23 +23,26 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12">카테고리</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-black mb-4">카테고리</h2>
+          <p class="text-gray-600 text-lg">원하는 카테고리를 선택해보세요</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
           <div
             v-for="category in categories"
-            :key="category.name"
-            class="text-center group cursor-pointer"
+            :key="category.categoryId"
+            class="group cursor-pointer"
           >
             <div
-              class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors"
+              class="px-8 py-4 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-800 group-hover:border-gray-400 group-hover:bg-gray-50 group-hover:text-black transition-all duration-300 hover:shadow-md hover:-translate-y-1 text-center"
             >
-              <span class="text-2xl">{{ category.icon }}</span>
+              <div>{{ category.categoryName.toUpperCase() }}</div>
+              <div class="text-xs text-gray-500 mt-1 font-normal">
+                {{ category.productCount?.toLocaleString() || 0 }} 상품
+              </div>
             </div>
-            <p class="text-sm font-medium text-gray-700 group-hover:text-black">
-              {{ category.name }}
-            </p>
           </div>
         </div>
       </div>
@@ -141,16 +144,23 @@
   </div>
 </template>
 
-<script setup>
-// 카테고리 데이터
-const categories = [
-  { name: "신발", icon: "👟" },
-  { name: "의류", icon: "👕" },
-  { name: "가방", icon: "👜" },
-  { name: "시계", icon: "⌚" },
-  { name: "액세서리", icon: "💍" },
-  { name: "라이프", icon: "🏠" },
-];
+<script setup lang="ts">
+// SEO 설정
+useHead({
+  title: "Lunatalk - 정품만을 다루는 중고 명품 거래 플랫폼",
+  meta: [
+    {
+      name: "description",
+      content: "검증된 정품만을 거래하는 안전한 플랫폼에서 원하는 상품을 찾아보세요",
+    },
+    { name: "keywords", content: "중고명품, 정품거래, 명품쇼핑, 중고시장" },
+  ],
+});
+
+// Composables
+const { categories } = useCategory();
+
+console.log(categories.value);
 
 // 인기 상품 데이터
 const featuredProducts = [
