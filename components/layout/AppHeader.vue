@@ -90,5 +90,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCategory } from "~/composables/category/useCategory";
+
 const { categories } = useCategory();
 </script>

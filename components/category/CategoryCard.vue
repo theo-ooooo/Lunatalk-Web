@@ -1,23 +1,31 @@
 <template>
-  <div class="text-center group cursor-pointer" @click="$emit('click', category)">
+  <div class="group cursor-pointer" @click="$emit('click', category)">
     <div
-      class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors"
+      class="px-8 py-4 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-800 group-hover:border-gray-400 group-hover:bg-gray-50 group-hover:text-black transition-all duration-300 hover:shadow-md hover:-translate-y-1 text-center"
     >
-      <span class="text-2xl">{{ category.icon }}</span>
+      <div>{{ category.categoryName.toUpperCase() }}</div>
+      <div class="text-xs text-gray-500 mt-1 font-normal">
+        {{ formatProductCount(category.productCount) }} 상품
+      </div>
     </div>
-    <p class="text-sm font-medium text-gray-700 group-hover:text-black">
-      {{ category.name }}
-    </p>
   </div>
 </template>
 
-<script setup>
-defineProps({
-  category: {
-    type: Object,
-    required: true,
-  },
-});
+<script setup lang="ts">
+import type { Category } from "~/types/category";
 
-defineEmits(["click"]);
+interface Props {
+  category: Category;
+}
+
+defineProps<Props>();
+
+defineEmits<{
+  click: [category: Category];
+}>();
+
+const formatProductCount = (count: number | null | undefined): string => {
+  if (!count) return "0";
+  return count.toLocaleString();
+};
 </script>
