@@ -15,5 +15,5 @@ export interface Product {
 export interface Exhibition {
   exhibitionId: number;
   title: string;
-  products: Product[];
+  products: { product: Product }[];
 }
