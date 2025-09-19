@@ -1,15 +1,14 @@
 export const SITE_CONFIG = {
   name: "Lunatalk",
-  description: "정품만을 다루는 중고 명품 거래 플랫폼",
-  keywords: "중고명품, 정품거래, 명품쇼핑, 중고시장",
+  description: "루나톡 - 가방, 다이어리 판매 브랜드",
+  keywords: "가방/다이어리 브랜드 루나톡(Lunatalk)",
 } as const;
 
 export const HERO_CONFIG = {
-  title: "KREAM",
-  subtitle: "정품만을 다루는 중고 명품 거래 플랫폼",
+  title: "LUNATALK",
+  subtitle: "루나톡 - 가방, 다이어리 판매 브랜드",
   buttons: {
     primary: "지금 쇼핑하기",
-    secondary: "판매하기",
   },
 } as const;
 

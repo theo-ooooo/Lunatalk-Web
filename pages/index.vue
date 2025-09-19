@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Hero Section -->
-    <HeroSection @shop-now="handleShopNow" @sell-now="handleSellNow" />
+    <SectionsHeroSection @shop-now="handleShopNow" @sell-now="handleSellNow" />
 
     <!-- Categories Section -->
     <section class="py-20 bg-white">
@@ -49,11 +49,8 @@
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <StatsSection />
-
     <!-- CTA Section -->
-    <CTASection @download-app="handleDownloadApp" @start-web="handleStartWeb" />
+    <SetctionsCTASection @download-app="handleDownloadApp" @start-web="handleStartWeb" />
   </div>
 </template>
 
